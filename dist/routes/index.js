@@ -5,6 +5,7 @@ var routes = express_1.Router();
 routes.get("/", function (request, response) {
     return response.json({
         ola: "world",
+        ai: "teste"
     });
 });
 exports.default = routes;
