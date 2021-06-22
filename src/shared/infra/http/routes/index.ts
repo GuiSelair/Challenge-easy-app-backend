@@ -9,5 +9,10 @@ const routes = Router();
 routes.use("/login", sessionsRouter);
 routes.use("/user", usersRouter);
 routes.use("/courses", coursesRouter);
+routes.get("/", (request, response) => {
+  return response.json({
+    status: "ON"
+  })
+})
 
 export default routes;
