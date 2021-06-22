@@ -51,7 +51,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var typeorm_1 = require("typeorm");
-var LevelCourse_1 = __importDefault(require("@modules/courses/infra/typeorm/entities/LevelCourse"));
+var LevelCourse_1 = __importDefault(require("../../../../courses/infra/typeorm/entities/LevelCourse"));
 var CoursesController = /** @class */ (function () {
     function CoursesController() {
     }
