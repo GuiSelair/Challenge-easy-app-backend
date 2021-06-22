@@ -1,3 +1,4 @@
+
 {
   "type": "postgres",
   "host": "ec2-52-2-118-38.compute-1.amazonaws.com",
@@ -9,10 +10,10 @@
   "password": "42a0a36545a04e221a514bb64fd03a549ae1f19a30b7684859e1e74f5a934a84",
   "database": "d5qnlno1hli39t",
   "entities": [
-      "./src/modules/**/infra/typeorm/entities/*.ts"
+      "dist/modules/**/infra/typeorm/entities/*.js"
   ],
   "migrations": [
-      "./src/shared/infra/typeorm/migrations/*.ts"
+      "dist/modules/**/infra/typeorm/entities/*.ts"
   ],
   "cli": {
       "migrationsDir": "./src/shared/infra/typeorm/migrations"
