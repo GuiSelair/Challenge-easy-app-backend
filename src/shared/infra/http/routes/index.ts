@@ -21,14 +21,23 @@ routes.get("/", (request: Request, response: Response, _:NextFunction) => {
 routes.post("/generatePDF", ensureAuthenticated ,(request: Request, response: Response, _:NextFunction) => {
   const { body } = request;
 
-  const pdf = new PDFKit();
+  const pdf = new PDFKit({
+    size: 'A4',
+    margin: 50
+});
   pdf.text(JSON.stringify(body));
-  pdf.pipe(response);
-  pdf.end();
+  
   // console.log(`${path.resolve(__dirname, "..", "..", "..", "..", "..", "reports")}/pdftest.pdf`, 'pdftest.pdf');
   // return response.json({
   //   "url": "pdf.pdf",
   // });
+
+  response.writeHead(200, {
+    'Content-Type': 'application/pdf',
+    'Content-Disposition': 'attachment; filename=test.pdf'
+} )
+pdf.pipe(response);
+  pdf.end();
   
 });
 
