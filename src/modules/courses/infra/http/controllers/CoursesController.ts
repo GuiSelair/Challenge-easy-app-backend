@@ -43,6 +43,8 @@ class CoursesController {
 
     return response.json(findCourse);
   }
+
+  
 }
 
 export default CoursesController;

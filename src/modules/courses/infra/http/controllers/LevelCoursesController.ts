@@ -240,6 +240,36 @@ class CoursesController {
       error: false,
     })
   }
+
+  public async listByIDCurso(request: Request, response: Response, _:NextFunction): Promise<Response> {
+    const coursesLevelRepository = getRepository(LevelCourse);
+    const { id_curso } = request.body;
+    
+    const allCourses = await coursesLevelRepository.find({
+      select: [
+        "status", 
+        "id_curso", 
+        "id_nivel", 
+        "descricao", 
+        "proximo_nivel", 
+        "nivel_equivalente", 
+        "nivel_equivalente2",
+        "nivel_equivalente3",
+        "nivel_equivalente4"
+      ],
+      where: {
+        id_curso,
+      }
+    });
+
+    const courses = allCourses.map(course => ({
+      ...course,
+      id_curso: Number(course.id_curso / 1_000_000),
+      id_nivel: Number(course.id_nivel / 1_000_000),
+    }))
+
+    return response.json(courses);
+  }
 }
 
 export default CoursesController;

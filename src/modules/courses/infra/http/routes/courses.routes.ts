@@ -14,6 +14,7 @@ coursesRouter.post("/:id/level/create", ensureAuthenticated, levelCoursesControl
 coursesRouter.put("/:idLevel/level/update", ensureAuthenticated, levelCoursesController.update);
 coursesRouter.delete("/:idLevel/level/delete", ensureAuthenticated, levelCoursesController.delete);
 coursesRouter.get("/listAllLevels", ensureAuthenticated, levelCoursesController.show);
+coursesRouter.get("/listAllLevelsByIDCourse/", ensureAuthenticated, levelCoursesController.listByIDCurso);
 coursesRouter.get("/listLevel/:id/", ensureAuthenticated, levelCoursesController.index);
 
 // CURSOS
