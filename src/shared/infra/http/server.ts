@@ -13,7 +13,6 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
-app.use('/files', express.static(path.resolve(__dirname, "..", "..", "..", "..", "..", "reports")));
 app.use(routes);
 
 app.listen(port, () => console.log("[ON] Server running on port 3001"));

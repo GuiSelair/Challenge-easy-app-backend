@@ -23,12 +23,12 @@ routes.post("/generatePDF", ensureAuthenticated ,(request: Request, response: Re
 
   const pdf = new PDFKit();
   pdf.text(JSON.stringify(body));
-  pdf.pipe(fs.createWriteStream(`${path.resolve(__dirname, "..", "..", "..", "..", "..", "reports")}/pdftest.pdf`));
+  pdf.pipe(response);
   pdf.end();
-  console.log(`${path.resolve(__dirname, "..", "..", "..", "..", "..", "reports")}/pdftest.pdf`, 'pdftest.pdf');
-  return response.json({
-    "url": `${path.resolve(__dirname, "..", "..", "..", "..", "..", "reports")}/pdftest.pdf`,
-  });
+  // console.log(`${path.resolve(__dirname, "..", "..", "..", "..", "..", "reports")}/pdftest.pdf`, 'pdftest.pdf');
+  // return response.json({
+  //   "url": "pdf.pdf",
+  // });
   
 });
 
