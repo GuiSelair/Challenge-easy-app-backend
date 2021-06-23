@@ -25,8 +25,12 @@ routes.post("/generatePDF", ensureAuthenticated ,(request: Request, response: Re
   pdf.text(JSON.stringify(body));
   pdf.pipe(fs.createWriteStream(`${path.resolve(__dirname)}/pdftest.pdf`));
   pdf.end();
-
-  response.download(`${path.resolve(__dirname)}/pdftest.pdf`, 'pdftest.pdf');  
+  console.log(`${path.resolve(__dirname)}/pdftest.pdf`);
+  return response.download(`${path.resolve(__dirname)}/pdftest.pdf`, 'pdftest.pdf');
+  // return response.json({
+  //   "url": `${path.resolve(__dirname)}/pdftest.pdf`,
+  // });
+  
 });
 
 export default routes;
