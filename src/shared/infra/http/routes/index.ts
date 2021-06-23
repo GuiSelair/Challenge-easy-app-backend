@@ -23,9 +23,10 @@ routes.post("/generatePDF", ensureAuthenticated ,(request: Request, response: Re
 
   const pdf = new PDFKit();
   pdf.text(JSON.stringify(body));
-  pdf.pipe(fs.createWriteStream(`${path.resolve(__dirname)}/pdftest.pdf`))
-  pdf.pipe(response);
+  pdf.pipe(fs.createWriteStream(`${path.resolve(__dirname)}/pdftest.pdf`));
   pdf.end();
+
+  response.download(`${path.resolve(__dirname)}/pdftest.pdf`, 'pdftest.pdf');  
 });
 
 export default routes;
