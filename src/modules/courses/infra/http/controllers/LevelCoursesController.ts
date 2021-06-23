@@ -245,6 +245,8 @@ class CoursesController {
     const coursesLevelRepository = getRepository(LevelCourse);
     const { id_curso } = request.body;
     
+    const transformIDToString = id_curso === "0" ? 0 : Number(id_curso * 1_000_000)
+
     const allCourses = await coursesLevelRepository.find({
       select: [
         "status", 
@@ -258,7 +260,7 @@ class CoursesController {
         "nivel_equivalente4"
       ],
       where: {
-        id_curso,
+        id_curso: transformIDToString,
       }
     });
 
