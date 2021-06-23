@@ -24,7 +24,8 @@ routes.post("/generatePDF", ensureAuthenticated ,(request: Request, response: Re
   const pdf = new PDFKit({
     size: 'A4',
     margin: 50
-});
+  });
+
   pdf.text(JSON.stringify(body));
   
   // console.log(`${path.resolve(__dirname, "..", "..", "..", "..", "..", "reports")}/pdftest.pdf`, 'pdftest.pdf');
@@ -32,13 +33,9 @@ routes.post("/generatePDF", ensureAuthenticated ,(request: Request, response: Re
   //   "url": "pdf.pdf",
   // });
 
-  response.writeHead(200, {
-    'Content-Type': 'application/pdf',
-    'Content-Disposition': 'attachment; filename=test.pdf'
-} )
-pdf.pipe(response);
-  pdf.end();
-  
+  pdf.pipe(fs.createWriteStream('pdf.pdf'));
+  response.sendFile(__dirname+"/pdf.pdf");
+
 });
 
 export default routes;
