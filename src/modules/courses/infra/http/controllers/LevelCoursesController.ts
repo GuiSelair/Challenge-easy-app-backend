@@ -247,6 +247,7 @@ class CoursesController {
     
     const transformIDToString = id_curso === "0" ? 0 : Number(id_curso * 1_000_000)
 
+
     const allCourses = await coursesLevelRepository.find({
       select: [
         "status", 
